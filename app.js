@@ -1,4 +1,5 @@
 const express = require("express");
+const routeLoader = require("./routes");
 const cors = require("cors");
 const app = express();
 
@@ -10,6 +11,9 @@ app.use(express.json());
 
 // Parses urlencoded bodies
 app.use(express.urlencoded({ extended: false }));
+
+// Init application loaders
+routeLoader(app);
 
 // Error Handler Middleware
 app.use((err, req, res, next) => {
