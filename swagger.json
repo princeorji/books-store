@@ -1,0 +1,351 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Books Store",
+        "description": "API for managing books",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/books": {
+            "post": {
+                "summary": "Creates a book.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Things fall apart"
+                                    },
+                                    "author": {
+                                        "type": "string",
+                                        "example": "Chinua Achebe"
+                                    },
+                                    "isbn": {
+                                        "type": "string",
+                                        "example": "9780385474542"
+                                    },
+                                    "year": {
+                                        "type": "integer",
+                                        "example": 1958
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CREATED",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "example": "034a9771-3f4d-490f-b444-94360a583f38"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Things fall apart"
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "Chinua Achebe"
+                                        },
+                                        "isbn": {
+                                            "type": "string",
+                                            "example": "9780385474542"
+                                        },
+                                        "year": {
+                                            "type": "integer",
+                                            "example": 1958
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-02-05T16:59:49.660Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-02-05T16:59:49.660Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Returns a list of books.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "books": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "format": "uuid",
+                                                        "example": "034a9771-3f4d-490f-b444-94360a583f38"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Things fall apart"
+                                                    },
+                                                    "author": {
+                                                        "type": "string",
+                                                        "example": "Chinua Achebe"
+                                                    },
+                                                    "isbn": {
+                                                        "type": "string",
+                                                        "example": "9780385474542"
+                                                    },
+                                                    "year": {
+                                                        "type": "integer",
+                                                        "example": 1958
+                                                    },
+                                                    "created_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-02-05T16:59:49.660Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "string",
+                                                        "format": "date-time",
+                                                        "example": "2025-02-05T16:59:49.660Z"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "page": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "limit": {
+                                            "type": "integer",
+                                            "example": 10
+                                        },
+                                        "total": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/books/{id}": {
+            "get": {
+                "summary": "Returns a book.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "example": "034a9771-3f4d-490f-b444-94360a583f38"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Things fall apart"
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "Chinua Achebe"
+                                        },
+                                        "isbn": {
+                                            "type": "string",
+                                            "example": "9780385474542"
+                                        },
+                                        "year": {
+                                            "type": "integer",
+                                            "example": 1958
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-02-05T16:59:49.660Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-02-05T16:59:49.660Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "summary": "Updates a book.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Things fall apart (Update)"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "example": "034a9771-3f4d-490f-b444-94360a583f38"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Things fall apart (Update)"
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "Chinua Achebe"
+                                        },
+                                        "isbn": {
+                                            "type": "string",
+                                            "example": "9780385474542"
+                                        },
+                                        "year": {
+                                            "type": "integer",
+                                            "example": 1958
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-02-05T16:59:49.660Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-02-05T16:59:49.660Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deletes a book.",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "example": "034a9771-3f4d-490f-b444-94360a583f38"
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Things fall apart"
+                                        },
+                                        "author": {
+                                            "type": "string",
+                                            "example": "Chinua Achebe"
+                                        },
+                                        "isbn": {
+                                            "type": "string",
+                                            "example": "9780385474542"
+                                        },
+                                        "year": {
+                                            "type": "integer",
+                                            "example": 1958
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-02-05T16:59:49.660Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2025-02-05T16:59:49.660Z"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 const express = require("express");
 const routeLoader = require("./routes");
+const swaggerLoader = require("./swagger");
 const cors = require("cors");
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Init application loaders
 routeLoader(app);
+swaggerLoader(app);
 
 // Error Handler Middleware
 app.use((err, req, res, next) => {
